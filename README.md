@@ -3,7 +3,7 @@
 Proposals that protect your scope. Paste a client brief and get deliverables,
 three price options, exclusions and a change-order clause in seconds.
 
-**Live demo:** https://username.github.io/scopekit
+**Live demo:** https://kharkegaurav05-dev.github.io/Scopekit/
 
 ## Who it's for
 Freelance web developers, designers and small agencies who want to write
