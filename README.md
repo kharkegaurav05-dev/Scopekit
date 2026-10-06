@@ -1,4 +1,5 @@
 # ScopeKit
+<img src="screenshot.png" alt="ScopeKit screenshot" width="300">
 
 Proposals that protect your scope. Paste a client brief and get deliverables,
 three price options, exclusions and a change-order clause in seconds.
