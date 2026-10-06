@@ -107,8 +107,12 @@ footer{padding:28px 0 36px;color:var(--mut);font-size:.9rem;border-top:1px solid
 <section id="waitlist">
 <h2>Get early access</h2>
 <p class="sub">Join the waitlist and get the founding lifetime price.</p>
-<iframe data-tally-src="https://tally.so/embed/QK6J58?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="180" frameborder="0" title="Join the ScopeKit waitlist"></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}else v();</script>
+<form class="wl" id="wlf" novalidate>
+<input type="email" id="email" name="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email" required>
+<input type="checkbox" name="botcheck" id="bot" style="display:none" tabindex="-1" autocomplete="off">
+<button class="btn" id="wlb" type="submit">Join waitlist</button>
+</form>
+<div class="toast" id="wlt" role="status"></div>
 </section>
 
 <footer>ScopeKit prototype. Generated proposals are templates, so review them before sending.</footer>
@@ -154,6 +158,18 @@ $("gen").onclick=function(){
  };
  $("pr").onclick=function(){try{window.print()}catch(e){$("ct").textContent="Printing is unavailable here."}};
  $("out").scrollIntoView({behavior:"smooth",block:"start"});
+};
+var WEB3FORMS_KEY="YOUR_ACCESS_KEY";
+$("wlf").onsubmit=function(ev){
+ ev.preventDefault();
+ var e=$("email").value.trim(),t=$("wlt"),b=$("wlb");
+ if(!/^\S+@\S+\.\S+$/.test(e)){t.textContent="Enter a valid email address.";return}
+ if($("bot").checked)return;
+ b.disabled=true;t.textContent="Saving…";
+ fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:"New ScopeKit waitlist signup",from_name:"ScopeKit",email:e})})
+ .then(function(r){return r.json()})
+ .then(function(d){if(d.success){t.textContent="You're on the list. We'll email you when ScopeKit opens.";$("email").value=""}else{t.textContent="Something went wrong. Please try again."}b.disabled=false})
+ .catch(function(){t.textContent="Network error. Check your connection and try again.";b.disabled=false});
 };
 </script>
 </body>
