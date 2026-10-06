@@ -107,11 +107,7 @@ footer{padding:28px 0 36px;color:var(--mut);font-size:.9rem;border-top:1px solid
 <section id="waitlist">
 <h2>Get early access</h2>
 <p class="sub">Join the waitlist and get the founding lifetime price.</p>
-<form class="wl" id="wlf" onsubmit="return false">
-<input type="email" id="email" placeholder="you@example.com" aria-label="Email" required>
-<button class="btn" id="wlb" type="button">Join waitlist</button>
-</form>
-<div class="toast" id="wlt"></div>
+<a class="btn" href="https://tally.so/r/QK6J58" target="_blank" rel="noopener">Join waitlist</a>
 </section>
 
 <footer>ScopeKit prototype. Generated proposals are templates, so review them before sending.</footer>
@@ -157,12 +153,6 @@ $("gen").onclick=function(){
  };
  $("pr").onclick=function(){try{window.print()}catch(e){$("ct").textContent="Printing is unavailable here."}};
  $("out").scrollIntoView({behavior:"smooth",block:"start"});
-};
-$("wlb").onclick=function(){
- var e=$("email").value.trim();
- if(!/^\S+@\S+\.\S+$/.test(e)){$("wlt").textContent="Enter a valid email address.";return}
- try{localStorage.setItem("scopekit_waitlist",e)}catch(x){}
- $("wlt").textContent="You're on the list (demo only: connect a form service to collect real emails).";
 };
 </script>
 </body>
